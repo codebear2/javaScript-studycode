@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用标签</title>
+</head>
+<body>
+
+
+<!--1-->
+<!--font字体标签-->
+<!--font 是字体标签用来控制字体的  # 颜色（color） 字体（face） 大小（size） -->
+<!-- 在网页上显示 我是字体标签 并修改字体为宋体 颜色为红色-->
+<font color="red" face="宋体" size="5"> 我是字体标签 </font>
+
+
+
+<!--2-->
+<!--常用的特殊字符-->
+<!--即将标签 字符化-->
+<!-- 常用的有：
+<  &lt;
+>  &gt
+space  &nbsp
+-->
+列：我是 &lt;&gt;标签 <br/>
+
+
+
+
+<!--3-->
+<!--标题标签-->
+<!--标题标签  h1~h6 一级标题到六级标题
+对齐属性： align=“light”     light  right  center
+-->
+<h1>一级标题</h1>
+<h2 align="light">左对齐</h2>
+
+
+
+<!--4-->
+<!--超链接-->
+<!--
+<a></a> 是超链接标签
+属性： href 是链接的地址
+target 是设置哪个属性进行跳转
+           有两个属性值：_self 表示当前页面
+                      _blank 表示在新页面进行跳转
+-->
+<a href="https://www.baidu.com" target="_blank">百度</a>     <!--超链接在本页面跳转-->
+
+
+
+<!--5-->
+<!--列表标签-->
+<!--
+有三种  无序列表 有序列表 定义列表
+-->
+<!--
+<ul></ul> :无序列表
+<ol></ol>：有序列表
+li : 是列表项
+type：可以修改列表项前面的符号
+-->
+<ul type="none">
+    <li>张三</li>
+    <li>老王</li>
+    <li>楼下老王</li>
+</ul>
+
+<ol>
+    <li>张三</li>
+    <li>老王</li>
+    <li>楼下老王</li>
+</ol>
+
+
+
+<!--6-->
+<!--img标签-->
+<!--
+img 标签是图像标签 用来显示图片
+属性： src ：可以设置图片的路径
+                          web中路径分为两种：相对路径：.       表示当前文件所在目录
+                                                  ..      表示当前文件所在的上一级目录
+                                                  文件名   表示当前文件所在目录的文件
+
+                                          绝对路径：
+                                                 正确的格式：https://ip:port/工程名/资源路径
+-->
+<!--
+示例：          <img src="../imgs/1.jpg" width="10" height="10" border="1" alt="找不到图片"/>
+                                        宽           高          相框          异常
+-->
+
+
+
+<!--7-->
+<!--表格(重点*)-->
+<!--
+<table></table>:是表格标签
+                border="1" width="300" height="300" align="center" cell spacing="5"
+                表格边框      宽          长        表格相对与页面对齐方式    单元格之间的空隙
+<tr></tr> :表示行
+
+<td></td> :表示单元格
+          <b></b>:表示加粗
+          align 对单元格内的文本做位置对齐调整
+<th></th> :由于表头单元格非常常见 则有特殊的标签 详细效果见下文
+-->
+<table border="1" width="300" height="300" align="center" cellspacing="5">
+    <tr>
+        <td align="center"><b>1.1</b></td>
+        <th>1.2</th>          <!--效果等同于 <td align="center"><b>1.1</b></td> -->
+        <td>1.3</td>
+    </tr>
+    <tr>
+        <td>2.1</td>
+        <td>2.2</td>
+        <td>2.3</td>
+    </tr>
+    <tr>
+        <td>3.1</td>
+        <td>3.2</td>
+        <td>3.3</td>
+    </tr>
+</table>
+
+
+
+
+<!--8-->
+<!--表格的跨行跨列（次重点*）-->
+<!--
+1.建立一个三行三列的表格
+2.第一行 第一列的单元格要横跨两列
+3.第二行 第一列单元格要横跨两行
+4.第三行 第二列的单元格要横跨两行两列
+-->
+<!--
+属性： colspan 跨行
+      rowspan 跨列
+-->
+<br/>
+<table border="1" width="300" height="300" align="center" cellspacing="5">
+    <tr>
+        <td colspan="2">1.1</td>
+        <td>1.2</td>
+        <td>1.3</td>
+    </tr>
+    <tr>
+        <td rowspan="2">2.1</td>
+        <td>2.2</td>
+        <td>2.3</td>
+    </tr>
+    <tr>
+        <td>3.1</td>
+        <td colspan="2" rowspan="2">3.2</td>
+        <td>3.3</td>
+    </tr>
+</table>
+
+
+
+
+<!--9-->
+<!--ifarme框架标签(内嵌窗口)-->
+<!--
+ifarme标签的使用 : 在此标签内 使用name属性设定 与无序列表中的 target对应 即可完成点击链接 显示对应功能在小页面中显示
+-->
+<!--
+在一个页面单独 划出一个区域用于显示一个小页面
+-->
+<br/>
+<iframe width="300" height="300" name="a"></iframe>
+<ul>
+    <li><a href="你好.html" target="a">翻译</a></li>
+    <li><a href="hello.html" target="a">hello</a></li>
+</ul>
+<!--点击下方的链接 在上方范围页面中显示-->
+
+
+
+
+
+<!--10-->
+<!--表单标签(重点*)-->
+<!--
+表单就是用户收集用户的所有元素的集合,发送给服务器
+-->
+<!--
+input type="text"  :文本输入框       属性：value： 文本框默认值
+input type="password" ：密码输入框
+input type="radio"    : 单选框        属性：name 可以对其分组   checked="checked"  :默认选中
+input type="checkbox"  : 复选框
+
+input type="reset"     : 重置按钮      属性：value 可以修改按钮上的文本
+input type="submit"    :提交按钮       属性：value 可以修改按钮上的文本
+input type="button"    : 按钮         属性：value 可以修改按钮上的文本
+input type="file"      : 选择文件按钮   属性：value 可以修改按钮上的文本
+
+<select></select> ：下拉列表框
+             <option></option> : 下拉中的选项
+             select="select"   : 默认选中
+
+<textarea></textarea>    : 多行文本输入框（起始标签和结束标签之间的文本是默认值）
+                   属性：    rows="5" cols="20"       ：文本输入框输入字符     高   宽
+-->
+<br/>
+<form>
+    用户名称：<input type="text" value="默认值"/><br/>
+    用户密码：<input type="password"/><br/>
+    性别：   <input type="radio" name="sex"/>男 <input type="radio" name="sex" checked="checked"/>女<br/>
+    兴趣爱好：<input type="checkbox"/>喝酒<input type="checkbox"/>吸烟<input type="checkbox"/>烫头<br/>
+    国籍：<select>
+            <option>请选择国籍</option>
+            <option>中国</option>
+            <option>伊拉克</option>
+            <option>阿富汗</option>
+             </select><br/>
+    自我评价：<textarea rows="5" cols="20">我是默认值</textarea><br/>
+
+           <input type="reset" value="清空"/>
+           <input type="submit"/>
+           <input type="button"/>
+           <input type="file"/>
+   </form>
+<br/>
+<br/>
+
+
+
+
+
+<!--11-->
+<!--表单格式化-->
+<!--
+将表单放入表格中格式化
+即 一行有两个单元格  一个单元格放置文本  一个单元格放入各式框
+-->
+<form>
+    <table>
+        <tr>
+            <td>  用户名称： </td>
+            <td> <input type="text" value="默认值"/><br/> </td>
+        </tr>
+        <tr>
+            <td>  用户密码： </td>
+            <td> <input type="password"/><br/> </td>
+        </tr>
+        <tr>
+            <td> 性别： </td>
+            <td> <input type="radio" name="sex"/>男 <input type="radio" name="sex" checked="checked"/>女<br/> </td>
+        </tr>
+        <tr>
+            <td> 兴趣爱好： </td>
+            <td> <input type="checkbox"/>喝酒<input type="checkbox"/>吸烟<input type="checkbox"/>烫头<br/> </td>
+        </tr>
+    </table>
+</form>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id选择器</title>
+<!--id选择器格式:
+      #id号{
+      属性:值;
+      }
+-->
+
+    <style type="text/css">
+        #id001{
+            color: blue;
+            font-size: 30px;
+            border: 1px solid yellow;
+        }
+        #id002{
+            color: red;
+            font-size: 10px;
+            border: 2px dashed black;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--
+需求：
+分别定义两个div标签 ：
+一个标签的id为id001，然后根据id属性定义css样式修改字体颜色为蓝色，字体大小为30个像素，边框为1像素黄色实线；
+另一个标签的id为id002，然后根据id属性定义css样式修改字体颜色为红色，字体大小为10个像素，边框为2像素黑色虚线；
+-->
+
+<div id="id001">第一个标签</div>  <!-- id的名字 首个不能是数字 必须为字母-->
+<div id="id002">第二个标签</div>
+</body>
+</html>

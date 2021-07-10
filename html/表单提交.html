@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+<!--
+form  ：表单标签
+      属性：
+           action ：设置提交的服务器地址
+           method ：设置提交数据的方式 get（默认） 或 post
+-->
+<!--
+表单提交的时候，数据没有提交给服务器的三种情况：
+                                     1.表单项没有name 属性值
+                                     2.单选 复选（下拉列表中的option标签）都需要添加value 属性 ，以便发送给服务器
+                                     3.表单项 不在提交的form标签外
+-->
+<!--
+get请求的特点：
+           1.浏览器地址栏中的地址是 action属性 + ？+ 请求数据
+           请求参数的格式是 ： name=value&name=value
+           2.不安全    提交时数据可见
+           3.提交的数据有长度先指
+
+post请求的特点：
+           1.浏览器中只有服务器的地址   即action的属性值
+           2.相对与get请求 安全
+           3.理论上没有数据长度的限制
+-->
+
+
+
+
+<form action="https://www.baidu.com" method="get">
+         <input type="hidden" name="action" value="login"/>
+
+  用户名称：<input type="text" value="默认值"/><br/>
+  用户密码：<input type="password" name="username"/><br/>
+
+
+  性别：   <input type="radio" name="sex" value="boy"/>男 <input type="radio" name="sex" checked="checked"/>女<br/>
+                                       <!--  添加value 属性    -->
+
+  兴趣爱好：<input type="checkbox"/>喝酒<input type="checkbox"/>吸烟<input type="checkbox"/>烫头<br/>
+
+  国籍：<select>
+  <option>请选择国籍</option>
+  <option>中国</option>
+  <option>伊拉克</option>
+  <option>阿富汗</option>
+</select><br/>
+
+  自我评价：<textarea rows="5" cols="20">我是默认值</textarea><br/>
+
+  <input type="reset" value="清空"/>
+  <input type="submit"/>
+  <input type="button"/>
+  <input type="file"/>
+</form>
+</body>
+
+
+
+
+
+
+
+</html>
