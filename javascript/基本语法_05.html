@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>流程控制</title>
+</head>
+<body>
+<script>
+    'use strict'
+    let age =3;
+    if(age>3){
+        console.log('happy');
+    }else console.log('sad');
+    // sad
+
+    // while 不做例子
+
+    // for of 遍历元素  for in 遍历key
+    let num = [1,2,3,4,5,6,7,9];
+    for (let number of num) {
+        console.log(number);
+    }
+
+
+    let arr1 = [1, 2, 3, 4];
+    let obj = {
+        a: 1
+    };
+    arr1.forEach(function (self, index, arr) {
+        console.log(`当前元素为${self}索引为${index},属于数组${arr}`);
+        //做个简单计算
+        console.log(self + this.a);
+    }, obj)
+
+
+</script>
+</body>
+</html>

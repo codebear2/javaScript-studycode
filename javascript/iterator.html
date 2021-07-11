@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iterator</title>
+</head>
+<body>
+<script>
+  'use strict'
+  // 遍历Map 和 Set 用 for.. of
+
+  let f = new Map([['jack',100],['rose',90],['tom',80]]);
+  for (let x of f){
+    console.log(x);
+  }
+
+  let s = new Set([3,1,1,1,1]);
+  for (let b of s){
+    console.log(b);
+  }
+
+
+</script>
+</body>
+</html>

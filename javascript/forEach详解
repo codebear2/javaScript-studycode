@@ -1,0 +1,125 @@
+与for循环一样，forEach也属于完整遍历数组的方法，并会对数组每项元素执行提供的回调函数，一个完整的forEach应该是这样，我们一一解释回调函数的参数，与后方的this有何作用。
+
+arr.forEach(function(self,index,arr){},this);
+
+self：数组当前遍历的元素，默认从左往右依次获取数组元素。
+
+index：数组当前元素的索引，第一个元素索引为0，依次类推。
+
+arr：当前遍历的数组。
+
+this：回调函数中this指向。
+
+我们来看个简单的forEach例子，加强对于这四个参数的印象：
+
+
+// code
+
+let arr1 = [1, 2, 3, 4];
+let obj = {
+    a: 1
+};
+arr1.forEach(function (self, index, arr) {
+    console.log(`当前元素为${self}索引为${index},属于数组${arr}`);
+    //做个简单计算
+    console.log(self + this.a);
+}, obj)
+
+1.forEach不支持break
+
+大家都知道，在使用for循环时可以使用break跳出循环，比如我希望找到数组中符合条件的第一个元素就跳出循环，这对于优化数组遍历是非常棒的。很遗憾，forEach并不支持break操作，使用break会导致报错。
+
+// code
+
+let arr = [1, 2, 3, 4],
+    i = 0,
+    length = arr.length;
+for (; i < length; i++) {
+    console.log(arr[i]); //1,2
+    if (arr[i] === 2) {
+        break;
+    };
+};
+
+arr.forEach((self,index) => {
+    console.log(self);
+    if (self === 2) {
+        break; //报错
+    };
+});
+
+
+
+那forEach能不能跳出循环呢？可以，不过不是使用break，而是结合try catch操作，有兴趣可是看看博主这篇文章 js forEach跳出循环
+
+2.forEach中使用return无效
+
+首先需要确定的，直接再for循环中使用return会报错（函数中使用for可以return），forEach中使用return不会报错，但rerutn并不会生效，我们来看个例子：
+
+
+// code
+
+let arr = [1, 2, 3, 4];
+
+function find(array, num) {
+    array.forEach((self, index) => {
+        if (self === num) {
+            return index;
+        };
+    });
+};
+let index = find(arr, 2);// undefined
+
+
+
+上述代码想要找到数字2在数组中的索引，但return并不会起到终止代码运行并返回值的作用。
+当然如果我们真的要用return返回某个值，那就只能将return操作放在函数中，而不是forEach循环中，像这样：
+
+// code
+
+function find(array, num) {
+    let _index;
+    array.forEach((self, index) => {
+        if (self === num) {
+            _index = index;
+        };
+    });
+    return _index;
+};
+
+
+
+
+3.forEach删除自身元素index不会被重置
+还记得文章开头的问题吗，那段代码其实只会执行一次，数组也不会被删除干净，这是因为forEach在遍历跑完回调函数后，会隐性让index自增，像这样：
+
+// code
+
+arr.forEach((item, index) => {
+    arr.splice(index, 1);
+    console.log(1);
+    //这里隐性让index自增加1
+    index++;
+});
+
+
+
+
+当第一次遍历结束，此时数组为[2]而index变成了1，此时数组最大索引只是0，不满足条件，所以跳出了循环。
+灵机一动，有没有什么办法让此时的forEach不跳出循环呢，当然有，使用ES6的拓展运算符。
+// code
+
+[...arr].forEach((item, index) => {
+    arr.splice(index, 1);
+    console.log(1);
+});
+
+通过拓展运算符重置数组arr，达到不跳出循环的目的，你会发现内部确实执行了两次，很遗憾的是index依旧没被重置，所以数组arr还是无法在遍历的同时删空自己。
+因为在实际开发中，遍历数组同时删除某项的操作十分常见，所以对于习惯了forEach的同学，这一点一定要注意。
+
+
+
+
+
+
+
